@@ -357,9 +357,24 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
         TabBar(
           controller: tController,
           tabs: <Widget>[
-            Tab(icon: Icon(Icons.info)),
-            Tab(icon: Icon(Icons.movie)),
-            Tab(icon: Icon(Icons.photo)),
+            Tab(
+              icon: Icon(
+                Icons.info,
+                color: Colors.white,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.movie,
+                color: Colors.white,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.photo,
+                color: Colors.white,
+              ),
+            ),
           ],
           indicatorWeight: 5,
         ),
@@ -368,9 +383,9 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
           child: TabBarView(
             controller: tController,
             children: <Widget>[
-              TestScreen(),
-              TestScreen(),
-              TestScreen(),
+              InfoTab(),
+              TrailerTab(),
+              GalleryTab()
             ],
           ),
         ),
@@ -379,15 +394,48 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
   }
 }
 
-class TestScreen extends StatelessWidget {
+class InfoTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 500,
-      color: Colors.lime,
+      color: Colors.black,
       child: Center(
         child: Text(
-          "Test Screen",
+          "Info Page",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
+      ),
+    );
+  }
+}
+
+class TrailerTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      color: Colors.black,
+      child: Center(
+        child: Text(
+          "Trailer Tab",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
+      ),
+    );
+  }
+}
+
+
+class GalleryTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      color: Colors.black,
+      child: Center(
+        child: Text(
+          "Gallery Tab",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
       ),
