@@ -55,9 +55,9 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
 
   Widget _buildAppBar() {
     return AppBar(
-      title: Image.asset(
-        'images/moviehub.png',
-        height: 30,
+      title: Text(
+        'TheMovieDB',
+        style: TextStyle(color: Colors.white),
       ),
       backgroundColor: Colors.transparent,
       centerTitle: true,
@@ -382,11 +382,7 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
           height: 500,
           child: TabBarView(
             controller: tController,
-            children: <Widget>[
-              InfoTab(),
-              TrailerTab(),
-              GalleryTab()
-            ],
+            children: <Widget>[InfoTab(), TrailerTab(), GalleryTab()],
           ),
         ),
       ],
@@ -425,7 +421,6 @@ class TrailerTab extends StatelessWidget {
     );
   }
 }
-
 
 class GalleryTab extends StatelessWidget {
   @override
