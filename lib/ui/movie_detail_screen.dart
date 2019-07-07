@@ -359,12 +359,6 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
           tabs: <Widget>[
             Tab(
               icon: Icon(
-                Icons.info,
-                color: Colors.white,
-              ),
-            ),
-            Tab(
-              icon: Icon(
                 Icons.movie,
                 color: Colors.white,
               ),
@@ -382,26 +376,10 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
           height: 500,
           child: TabBarView(
             controller: tController,
-            children: <Widget>[InfoTab(), TrailerTab(), GalleryTab()],
+            children: <Widget>[TrailerTab(), GalleryTab()],
           ),
         ),
       ],
-    );
-  }
-}
-
-class InfoTab extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      color: Colors.black,
-      child: Center(
-        child: Text(
-          "Info Page",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-        ),
-      ),
     );
   }
 }
