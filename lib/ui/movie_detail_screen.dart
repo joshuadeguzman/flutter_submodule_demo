@@ -23,7 +23,7 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
 
   @override
   void initState() {
-    tController = TabController(initialIndex: 0, length: 3, vsync: this);
+    tController = TabController(initialIndex: 0, length: 2, vsync: this);
     tController.addListener(() {
       print("Current tab controller page ${tController.index}");
     });
@@ -111,7 +111,7 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
             _buildBannerView(context, movie),
             _buildMovieDescription(movie.overview),
             _buildMovieActions(),
-            _buildSectionTabView(),
+            _buildSectionTabView(movie),
           ],
         ),
       ),
@@ -351,7 +351,7 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
     );
   }
 
-  Widget _buildSectionTabView() {
+  Widget _buildSectionTabView(Movie movie) {
     return Column(
       children: <Widget>[
         TabBar(
@@ -376,7 +376,12 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
           height: 500,
           child: TabBarView(
             controller: tController,
-            children: <Widget>[TrailerTab(), GalleryTab()],
+            children: <Widget>[
+              TrailerTab(
+                movie: movie,
+              ),
+              GalleryTab()
+            ],
           ),
         ),
       ],
@@ -385,18 +390,179 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
 }
 
 class TrailerTab extends StatelessWidget {
+  final Movie movie;
+
+  TrailerTab({Key key, this.movie}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
-      color: Colors.black,
-      child: Center(
-        child: Text(
-          "Trailer Tab",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-        ),
-      ),
-    );
+        height: 500,
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+                          ),
+                        ),
+                      ),
+                      width: 200,
+                      height: 125,
+                    ),
+                    Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          FloatingActionButton(
+                            onPressed: () {},
+                            backgroundColor: Colors.red,
+                            child: Icon(
+                              Icons.play_arrow,
+                              color: Colors.white,
+                              size: 40,
+                            ),
+                          ),
+                        ],
+                      ),
+                      width: 200,
+                      height: 125,
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      '${movie.title} - Trailer 1',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 10)),
+            Row(
+              children: <Widget>[
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+                          ),
+                        ),
+                      ),
+                      width: 200,
+                      height: 125,
+                    ),
+                    Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          FloatingActionButton(
+                            onPressed: () {},
+                            backgroundColor: Colors.red,
+                            child: Icon(
+                              Icons.play_arrow,
+                              color: Colors.white,
+                              size: 40,
+                            ),
+                          ),
+                        ],
+                      ),
+                      width: 200,
+                      height: 125,
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      '${movie.title} - Trailer 2',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 10)),
+            Row(
+              children: <Widget>[
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+                          ),
+                        ),
+                      ),
+                      width: 200,
+                      height: 125,
+                    ),
+                    Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          FloatingActionButton(
+                            onPressed: () {},
+                            backgroundColor: Colors.red,
+                            child: Icon(
+                              Icons.play_arrow,
+                              color: Colors.white,
+                              size: 40,
+                            ),
+                          ),
+                        ],
+                      ),
+                      width: 200,
+                      height: 125,
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      '${movie.title} - Trailer 3',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ));
   }
 }
 
