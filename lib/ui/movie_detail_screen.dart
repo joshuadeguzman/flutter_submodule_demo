@@ -281,7 +281,7 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
           Text(
             description,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 16,
               color: Colors.white,
             ),
           ),
