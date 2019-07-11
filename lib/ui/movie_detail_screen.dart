@@ -57,7 +57,7 @@ class MovieDetailScreenState extends State<MovieDetailScreen>
     return AppBar(
       title: Text(
         'TheMovieDB',
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
       backgroundColor: Colors.transparent,
       centerTitle: true,
